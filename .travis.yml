@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services: 
+    - docker
+
+before_install:
+    - docker build -t zapp03/docker-test -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true zapp03/docker-test npm run test
